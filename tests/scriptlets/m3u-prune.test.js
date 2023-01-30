@@ -68,7 +68,7 @@ if (!isSupported) {
         const response = await fetch(M3U8_PATH);
         const responseM3U8 = await response.text();
 
-        assert.ok(responseM3U8.indexOf('tvessaiprod.nbcuni.com/video/') > -1);
+        assert.ok(responseM3U8.includes('tvessaiprod.nbcuni.com/video/'));
         assert.strictEqual(window.hit, undefined, 'should not hit');
         done();
     });
@@ -82,7 +82,7 @@ if (!isSupported) {
         const response = await fetch(M3U8_PATH);
         const responseM3U8 = await response.text();
 
-        assert.ok(responseM3U8.indexOf('#EXT-X-VMAP-AD-BREAK') > -1);
+        assert.ok(responseM3U8.includes('#EXT-X-VMAP-AD-BREAK'));
         assert.strictEqual(window.hit, undefined, 'should not hit');
         done();
     });
@@ -99,7 +99,7 @@ if (!isSupported) {
 
         const response = await fetch(M3U8_PATH);
         const responseM3U8 = await response.text();
-        assert.ok(responseM3U8.indexOf('tvessaiprod.nbcuni.com/video/') > -1);
+        assert.ok(responseM3U8.includes('tvessaiprod.nbcuni.com/video/'));
         assert.strictEqual(window.hit, undefined, 'should not hit');
         done();
     });
@@ -117,7 +117,7 @@ if (!isSupported) {
         const response = await fetch(M3U8_PATH);
         const responseM3U8 = await response.text();
 
-        assert.ok(responseM3U8.indexOf('#EXT-X-VMAP-AD-BREAK') > -1);
+        assert.ok(responseM3U8.includes('#EXT-X-VMAP-AD-BREAK'));
         assert.strictEqual(window.hit, undefined, 'should not hit');
         done();
     });
@@ -134,23 +134,23 @@ if (!isSupported) {
         const responseM3U8 = await response.text();
 
         assert.notOk(
-            responseM3U8.indexOf('tvessaiprod.nbcuni.com/video/') > -1,
+            responseM3U8.includes('tvessaiprod.nbcuni.com/video/'),
             'check if "tvessaiprod.nbcuni.com/video/" has been removed',
         );
         assert.notOk(
-            responseM3U8.indexOf('#EXT-X-CUE:TYPE="SpliceOut"') > -1,
+            responseM3U8.includes('#EXT-X-CUE:TYPE="SpliceOut"'),
             'check if "#EXT-X-CUE:TYPE="SpliceOut"" has been removed',
         );
         assert.notOk(
-            responseM3U8.indexOf('#EXT-X-CUE-IN') > -1,
+            responseM3U8.includes('#EXT-X-CUE-IN'),
             'check if "#EXT-X-CUE-IN" has been removed',
         );
         assert.notOk(
-            responseM3U8.indexOf('#EXT-X-ASSET:CAID') > -1,
+            responseM3U8.includes('#EXT-X-ASSET:CAID'),
             'check if "#EXT-X-ASSET:CAID" has been removed',
         );
         assert.notOk(
-            responseM3U8.indexOf('#EXT-X-SCTE35:') > -1,
+            responseM3U8.includes('#EXT-X-SCTE35:'),
             'check if "#EXT-X-SCTE35:" has been removed',
         );
         assert.strictEqual(window.hit, 'FIRED', 'hit function fired');
@@ -169,7 +169,7 @@ if (!isSupported) {
         const responseM3U8 = await response.text();
 
         assert.notOk(
-            responseM3U8.indexOf('#EXT-X-VMAP-AD-BREAK') > -1,
+            responseM3U8.includes('#EXT-X-VMAP-AD-BREAK'),
             'check if "#EXT-X-VMAP-AD-BREAK" has been removed',
         );
         assert.strictEqual(window.hit, 'FIRED', 'hit function fired');
@@ -188,7 +188,7 @@ if (!isSupported) {
         const responseM3U8 = await response.text();
 
         assert.notOk(
-            responseM3U8.indexOf(',ad') > -1,
+            responseM3U8.includes(',ad'),
             'check if "UPLYNK" ad segment has been removed',
         );
         assert.strictEqual(window.hit, 'FIRED', 'hit function fired');
@@ -207,7 +207,7 @@ if (!isSupported) {
         const responseM3U8 = await response.text();
 
         assert.notOk(
-            responseM3U8.indexOf('dclk_video_ads') > -1,
+            responseM3U8.includes('dclk_video_ads'),
             'check if "dclk_video_ads" ad segment has been removed',
         );
         assert.strictEqual(window.hit, 'FIRED', 'hit function fired');
@@ -227,23 +227,23 @@ if (!isSupported) {
         const responseM3U8 = await response.text();
 
         assert.notOk(
-            responseM3U8.indexOf('tvessaiprod.nbcuni.com/video/') > -1,
+            responseM3U8.includes('tvessaiprod.nbcuni.com/video/'),
             'check if "tvessaiprod.nbcuni.com/video/" has been removed',
         );
         assert.notOk(
-            responseM3U8.indexOf('#EXT-X-CUE:TYPE="SpliceOut"') > -1,
+            responseM3U8.includes('#EXT-X-CUE:TYPE="SpliceOut"'),
             'check if "#EXT-X-CUE:TYPE="SpliceOut"" has been removed',
         );
         assert.notOk(
-            responseM3U8.indexOf('#EXT-X-CUE-IN') > -1,
+            responseM3U8.includes('#EXT-X-CUE-IN'),
             'check if "#EXT-X-CUE-IN" has been removed',
         );
         assert.notOk(
-            responseM3U8.indexOf('#EXT-X-ASSET:CAID') > -1,
+            responseM3U8.includes('#EXT-X-ASSET:CAID'),
             'check if "#EXT-X-ASSET:CAID" has been removed',
         );
         assert.notOk(
-            responseM3U8.indexOf('#EXT-X-SCTE35:') > -1,
+            responseM3U8.includes('#EXT-X-SCTE35:'),
             'check if "#EXT-X-SCTE35:" has been removed',
         );
         assert.strictEqual(window.hit, 'FIRED', 'hit function fired');
@@ -261,21 +261,21 @@ if (!isSupported) {
         const response = await fetch(M3U8_PATH);
         const responseM3U8 = await response.text();
         assert.notOk(
-            responseM3U8.indexOf('tvessaiprod.nbcuni.com/video/') > -1,
+            responseM3U8.includes('tvessaiprod.nbcuni.com/video/'),
             'check if "tvessaiprod.nbcuni.com/video/" has been removed',
         );
         assert.notOk(
-            responseM3U8.indexOf('#EXT-X-CUE:TYPE="SpliceOut"') > -1,
+            responseM3U8.includes('#EXT-X-CUE:TYPE="SpliceOut"'),
             'check if "#EXT-X-CUE:TYPE="SpliceOut"" has been removed',
         );
         assert.notOk(
-            responseM3U8.indexOf('#EXT-X-CUE-IN') > -1, 'check if "#EXT-X-CUE-IN" has been removed',
+            responseM3U8.includes('#EXT-X-CUE-IN'), 'check if "#EXT-X-CUE-IN" has been removed',
         );
         assert.notOk(
-            responseM3U8.indexOf('#EXT-X-ASSET:CAID') > -1, 'check if "#EXT-X-ASSET:CAID" has been removed',
+            responseM3U8.includes('#EXT-X-ASSET:CAID'), 'check if "#EXT-X-ASSET:CAID" has been removed',
         );
         assert.notOk(
-            responseM3U8.indexOf('#EXT-X-SCTE35:') > -1, 'check if "#EXT-X-SCTE35:" has been removed',
+            responseM3U8.includes('#EXT-X-SCTE35:'), 'check if "#EXT-X-SCTE35:" has been removed',
         );
         assert.strictEqual(window.hit, 'FIRED', 'hit function fired');
         done();
@@ -292,7 +292,7 @@ if (!isSupported) {
         const response = await fetch(M3U8_PATH);
         const responseM3U8 = await response.text();
         assert.notOk(
-            responseM3U8.indexOf('#EXT-X-VMAP-AD-BREAK') > -1,
+            responseM3U8.includes('#EXT-X-VMAP-AD-BREAK'),
             'check if "#EXT-X-VMAP-AD-BREAK" has been removed',
         );
         assert.strictEqual(window.hit, 'FIRED', 'hit function fired');
@@ -312,23 +312,23 @@ if (!isSupported) {
         const response = await fetch(M3U8_PATH);
         const responseM3U8 = await response.text();
         assert.notOk(
-            responseM3U8.indexOf('tvessaiprod.nbcuni.com/video/') > -1,
+            responseM3U8.includes('tvessaiprod.nbcuni.com/video/'),
             'check if "tvessaiprod.nbcuni.com/video/" has been removed',
         );
         assert.notOk(
-            responseM3U8.indexOf('#EXT-X-CUE:TYPE="SpliceOut"') > -1,
+            responseM3U8.includes('#EXT-X-CUE:TYPE="SpliceOut"'),
             'check if "#EXT-X-CUE:TYPE="SpliceOut"" has been removed',
         );
         assert.notOk(
-            responseM3U8.indexOf('#EXT-X-CUE-IN') > -1,
+            responseM3U8.includes('#EXT-X-CUE-IN'),
             'check if "#EXT-X-CUE-IN" has been removed',
         );
         assert.notOk(
-            responseM3U8.indexOf('#EXT-X-ASSET:CAID') > -1,
+            responseM3U8.includes('#EXT-X-ASSET:CAID'),
             'check if "#EXT-X-ASSET:CAID" has been removed',
         );
         assert.notOk(
-            responseM3U8.indexOf('#EXT-X-SCTE35:') > -1,
+            responseM3U8.includes('#EXT-X-SCTE35:'),
             'check if "#EXT-X-SCTE35:" has been removed',
         );
         assert.strictEqual(window.hit, 'FIRED', 'hit function fired');
@@ -348,7 +348,7 @@ if (!isSupported) {
         const response = await fetch(M3U8_PATH);
         const responseM3U8 = await response.text();
         assert.notOk(
-            responseM3U8.indexOf('#EXT-X-VMAP-AD-BREAK') > -1,
+            responseM3U8.includes('#EXT-X-VMAP-AD-BREAK'),
             'check if "#EXT-X-VMAP-AD-BREAK" has been removed',
         );
         assert.strictEqual(window.hit, 'FIRED', 'hit function fired');
@@ -366,7 +366,7 @@ if (!isSupported) {
         xhr.open(METHOD, M3U8_PATH);
         xhr.onload = () => {
             assert.ok(
-                xhr.responseText.indexOf('tvessaiprod.nbcuni.com/video/') > -1,
+                xhr.responseText.includes('tvessaiprod.nbcuni.com/video/'),
                 'line with "tvessaiprod.nbcuni.com/video/" should not be removed',
             );
             assert.strictEqual(window.hit, undefined, 'should not hit');
@@ -385,7 +385,7 @@ if (!isSupported) {
         const xhr = new XMLHttpRequest();
         xhr.open(METHOD, M3U8_PATH);
         xhr.onload = () => {
-            assert.ok(xhr.responseText.indexOf('#EXT-X-VMAP-AD-BREAK') > -1);
+            assert.ok(xhr.responseText.includes('#EXT-X-VMAP-AD-BREAK'));
             assert.strictEqual(window.hit, undefined, 'should not hit');
             done();
         };
@@ -407,7 +407,7 @@ if (!isSupported) {
         xhr.open(METHOD, M3U8_PATH);
         xhr.onload = () => {
             assert.ok(
-                xhr.responseText.indexOf('tvessaiprod.nbcuni.com/video/') > -1,
+                xhr.responseText.includes('tvessaiprod.nbcuni.com/video/'),
                 'line with "tvessaiprod.nbcuni.com/video/" should not be removed',
             );
             assert.strictEqual(window.hit, undefined, 'should not hit');
@@ -431,7 +431,7 @@ if (!isSupported) {
         xhr.open(METHOD, M3U8_PATH);
         xhr.onload = () => {
             assert.ok(
-                xhr.responseText.indexOf('#EXT-X-VMAP-AD-BREAK') > -1,
+                xhr.responseText.includes('#EXT-X-VMAP-AD-BREAK'),
                 'line with "#EXT-X-VMAP-AD-BREAK" should not be removed',
             );
             assert.strictEqual(window.hit, undefined, 'should not hit');
@@ -453,23 +453,23 @@ if (!isSupported) {
         xhr.open(METHOD, M3U8_PATH);
         xhr.onload = () => {
             assert.notOk(
-                xhr.responseText.indexOf('tvessaiprod.nbcuni.com/video/') > -1,
+                xhr.responseText.includes('tvessaiprod.nbcuni.com/video/'),
                 'check if "tvessaiprod.nbcuni.com/video/" has been removed',
             );
             assert.notOk(
-                xhr.responseText.indexOf('#EXT-X-CUE:TYPE="SpliceOut"') > -1,
+                xhr.responseText.includes('#EXT-X-CUE:TYPE="SpliceOut"'),
                 'check if "#EXT-X-CUE:TYPE="SpliceOut"" has been removed',
             );
             assert.notOk(
-                xhr.responseText.indexOf('#EXT-X-CUE-IN') > -1,
+                xhr.responseText.includes('#EXT-X-CUE-IN'),
                 'check if "#EXT-X-CUE-IN" has been removed',
             );
             assert.notOk(
-                xhr.responseText.indexOf('#EXT-X-ASSET:CAID') > -1,
+                xhr.responseText.includes('#EXT-X-ASSET:CAID'),
                 'check if "#EXT-X-ASSET:CAID" has been removed',
             );
             assert.notOk(
-                xhr.responseText.indexOf('#EXT-X-SCTE35:') > -1,
+                xhr.responseText.includes('#EXT-X-SCTE35:'),
                 'check if "#EXT-X-SCTE35:" has been removed',
             );
             assert.strictEqual(window.hit, 'FIRED', 'hit function fired');
@@ -491,7 +491,7 @@ if (!isSupported) {
         xhr.open(METHOD, M3U8_PATH);
         xhr.onload = () => {
             assert.notOk(
-                xhr.responseText.indexOf('#EXT-X-VMAP-AD-BREAK') > -1,
+                xhr.responseText.includes('#EXT-X-VMAP-AD-BREAK'),
                 'check if "#EXT-X-VMAP-AD-BREAK" has been removed',
             );
             assert.strictEqual(window.hit, 'FIRED', 'hit function fired');
@@ -512,7 +512,7 @@ if (!isSupported) {
         const xhr = new XMLHttpRequest();
         xhr.open(METHOD, M3U8_PATH);
         xhr.onload = () => {
-            assert.notOk(xhr.responseText.indexOf(',ad') > -1, 'check if "UPLYNK" ad segment has been removed');
+            assert.notOk(xhr.responseText.includes(',ad'), 'check if "UPLYNK" ad segment has been removed');
             assert.strictEqual(window.hit, 'FIRED', 'hit function fired');
             done();
         };
@@ -532,23 +532,23 @@ if (!isSupported) {
         xhr.open(METHOD, M3U8_PATH);
         xhr.onload = () => {
             assert.notOk(
-                xhr.responseText.indexOf('tvessaiprod.nbcuni.com/video/') > -1,
+                xhr.responseText.includes('tvessaiprod.nbcuni.com/video/'),
                 'check if "tvessaiprod.nbcuni.com/video/" has been removed',
             );
             assert.notOk(
-                xhr.responseText.indexOf('#EXT-X-CUE:TYPE="SpliceOut"') > -1,
+                xhr.responseText.includes('#EXT-X-CUE:TYPE="SpliceOut"'),
                 'check if "#EXT-X-CUE:TYPE="SpliceOut"" has been removed',
             );
             assert.notOk(
-                xhr.responseText.indexOf('#EXT-X-CUE-IN') > -1,
+                xhr.responseText.includes('#EXT-X-CUE-IN'),
                 'check if "#EXT-X-CUE-IN" has been removed',
             );
             assert.notOk(
-                xhr.responseText.indexOf('#EXT-X-ASSET:CAID') > -1,
+                xhr.responseText.includes('#EXT-X-ASSET:CAID'),
                 'check if "#EXT-X-ASSET:CAID" has been removed',
             );
             assert.notOk(
-                xhr.responseText.indexOf('#EXT-X-SCTE35:') > -1,
+                xhr.responseText.includes('#EXT-X-SCTE35:'),
                 'check if "#EXT-X-SCTE35:" has been removed',
             );
             assert.strictEqual(window.hit, 'FIRED', 'hit function fired');
@@ -570,7 +570,7 @@ if (!isSupported) {
         xhr.open(METHOD, M3U8_PATH);
         xhr.onload = () => {
             assert.notOk(
-                xhr.responseText.indexOf('#EXT-X-VMAP-AD-BREAK') > -1,
+                xhr.responseText.includes('#EXT-X-VMAP-AD-BREAK'),
                 'check if "#EXT-X-VMAP-AD-BREAK" has been removed',
             );
             assert.strictEqual(window.hit, 'FIRED', 'hit function fired');
@@ -594,23 +594,23 @@ if (!isSupported) {
         xhr.open(METHOD, M3U8_PATH);
         xhr.onload = () => {
             assert.notOk(
-                xhr.responseText.indexOf('tvessaiprod.nbcuni.com/video/') > -1,
+                xhr.responseText.includes('tvessaiprod.nbcuni.com/video/'),
                 'check if "tvessaiprod.nbcuni.com/video/" has been removed',
             );
             assert.notOk(
-                xhr.responseText.indexOf('#EXT-X-CUE:TYPE="SpliceOut"') > -1,
+                xhr.responseText.includes('#EXT-X-CUE:TYPE="SpliceOut"'),
                 'check if "#EXT-X-CUE:TYPE="SpliceOut"" has been removed',
             );
             assert.notOk(
-                xhr.responseText.indexOf('#EXT-X-CUE-IN') > -1,
+                xhr.responseText.includes('#EXT-X-CUE-IN'),
                 'check if "#EXT-X-CUE-IN" has been removed',
             );
             assert.notOk(
-                xhr.responseText.indexOf('#EXT-X-ASSET:CAID') > -1,
+                xhr.responseText.includes('#EXT-X-ASSET:CAID'),
                 'check if "#EXT-X-ASSET:CAID" has been removed',
             );
             assert.notOk(
-                xhr.responseText.indexOf('#EXT-X-SCTE35:') > -1,
+                xhr.responseText.includes('#EXT-X-SCTE35:'),
                 'check if "#EXT-X-SCTE35:" has been removed',
             );
             assert.strictEqual(window.hit, 'FIRED', 'hit function fired');
@@ -634,7 +634,7 @@ if (!isSupported) {
         xhr.open(METHOD, M3U8_PATH);
         xhr.onload = () => {
             assert.notOk(
-                xhr.responseText.indexOf('#EXT-X-VMAP-AD-BREAK') > -1,
+                xhr.responseText.includes('#EXT-X-VMAP-AD-BREAK'),
                 'check if "#EXT-X-VMAP-AD-BREAK" has been removed',
             );
             assert.strictEqual(window.hit, 'FIRED', 'hit function fired');
