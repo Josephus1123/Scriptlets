@@ -482,3 +482,27 @@ test('match any callback, falsy non-numbers delays dont collide with 0 ', (asser
     const timeoutTest3 = setTimeout(third, undefined);
     testTimeouts.push(timeoutTest3);
 });
+
+test('match callback with quotes inside', (assert) => {
+    const done = assert.async();
+    window.one = 'one';
+    // We need to run our assertion after all timeouts
+    nativeSetTimeout(() => {
+        assert.equal(window.one, 'one', 'property \'one\' is not changed');
+        assert.strictEqual(window.hit, 'FIRED', 'hit fired');
+        done();
+    }, 100);
+
+    // Simulate argument being parsed by tsurlfilter
+    // so scriptlet gets "\\'one\\'" as match argument
+    const ESCAPED_CALLBACK_MATCH = '\\\'one\\\'';
+
+    // run scriptlet code
+    const scriptletArgs = [ESCAPED_CALLBACK_MATCH, '30'];
+    runScriptlet(name, scriptletArgs);
+
+    // eslint-disable-next-line dot-notation
+    const first = () => { window['one'] = 'NEW ONE'; };
+    const timeoutTest1 = setTimeout(first, 30);
+    testTimeouts.push(timeoutTest1);
+});

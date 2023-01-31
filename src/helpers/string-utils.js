@@ -48,7 +48,21 @@ export const toRegExp = (input = '') => {
     if (input[0] === FORWARD_SLASH && input[input.length - 1] === FORWARD_SLASH) {
         return new RegExp(input.slice(1, -1));
     }
-    const escaped = input.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+    /**
+     * Trim quote slashes for cases where scriptlet rule argument has escaped quotes
+     * e.g #%#//scriptlet('prevent-setTimeout', '.css(\'display\',\'block\');')
+     *
+     * note that such slashes will be escaped by tsurlfilter
+     * '.css(\'display\',\'block\');' => ".css(\\'display\\',\\'block\\');"
+     *
+     * https://github.com/AdguardTeam/Scriptlets/issues/286
+     */
+    const trimmedInput = input
+        .replace(/\\'/g, '\'')
+        .replace(/\\"/g, '"');
+
+    const escaped = trimmedInput.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     return new RegExp(escaped);
 };
 
